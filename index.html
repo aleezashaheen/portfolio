@@ -1,180 +1,1189 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coffee Bliss Cafe</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #fff8f0;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aleeza Shaheen | B2B LinkedIn Ghostwriter & Personal Brand Strategist</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            bgMain: '#0B0F17',
+            bgAlt: '#111827',
+            cardBg: '#151C29',
+            emeraldAccent: '#22C55E',
+            borderSubtle: '#1E293B',
+            textSec: '#9CA3AF',
+          }
         }
-        header {
-            background-color: #6f4e37;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: #8b5e3c;
-        }
-        nav a {
-            color: white;
-            padding: 14px 20px;
-            text-decoration: none;
-            text-align: center;
-        }
-        nav a:hover {
-            background-color: #a67857;
-        }
-        section {
-            padding: 20px;
-            text-align: center;
-        }
-        footer {
-            background-color: #6f4e37;
-            color: white;
-            text-align: center;
-            padding: 10px;
-        }
-        /* Chatbot styles */
-        #chatbot {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 300px;
-            max-height: 400px;
-            border: 2px solid #6f4e37;
-            border-radius: 10px;
-            background-color: white;
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
-        #chat-header {
-            background-color: #6f4e37;
-            color: white;
-            padding: 10px;
-            text-align: center;
-        }
-        #chat-messages {
-            flex: 1;
-            padding: 10px;
-            overflow-y: auto;
-            font-size: 14px;
-        }
-        #chat-input {
-            display: flex;
-        }
-        #chat-input input {
-            flex: 1;
-            padding: 10px;
-            border: none;
-            border-top: 1px solid #ccc;
-        }
-        #chat-input button {
-            background-color: #6f4e37;
-            color: white;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-        }
-        #chat-input button:hover {
-            background-color: #8b5e3c;
-        }
-        .user-msg {
-            text-align: right;
-            margin: 5px 0;
-        }
-        .bot-msg {
-            text-align: left;
-            margin: 5px 0;
-        }
-    </style>
-</head>
-<body>
-
-<header>
-    <h1>Coffee Bliss Cafe</h1>
-    <p>Fresh Coffee. Cozy Atmosphere. Happy Customers.</p>
-</header>
-
-<nav>
-    <a href="#home">Home</a>
-    <a href="#menu">Menu</a>
-    <a href="#contact">Contact</a>
-</nav>
-
-<section id="home">
-    <h2>Welcome to Coffee Bliss!</h2>
-    <p>Enjoy our freshly brewed coffee, pastries, and warm ambiance.</p>
-</section>
-
-<section id="menu">
-    <h2>Our Menu</h2>
-    <p>Coffee, Espresso, Latte, Cappuccino, Muffins, Sandwiches</p>
-</section>
-
-<section id="contact">
-    <h2>Contact Us</h2>
-    <p>Email: coffee@bliss.com | Phone: +123 456 7890</p>
-</section>
-
-<footer>
-    &copy; 2026 Coffee Bliss Cafe. All rights reserved.
-</footer>
-
-<!-- Chatbot -->
-<div id="chatbot">
-    <div id="chat-header">Chat with us!</div>
-    <div id="chat-messages"></div>
-    <div id="chat-input">
-        <input type="text" id="userInput" placeholder="Type your message...">
-        <button onclick="sendMessage()">Send</button>
-    </div>
-</div>
-
-<script>
-    const chatMessages = document.getElementById('chat-messages');
-
-    function sendMessage() {
-        const userInput = document.getElementById('userInput');
-        const msg = userInput.value.trim();
-        if(msg === '') return;
-
-        // Display user message
-        const userMsgDiv = document.createElement('div');
-        userMsgDiv.className = 'user-msg';
-        userMsgDiv.textContent = msg;
-        chatMessages.appendChild(userMsgDiv);
-
-        // Clear input
-        userInput.value = '';
-
-        // Scroll to bottom
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-
-        // Bot reply (basic AI logic)
-        let botReply = "Sorry, I didn't understand that.";
-        const lowerMsg = msg.toLowerCase();
-        if(lowerMsg.includes("hello") || lowerMsg.includes("hi")) botReply = "Hello! Welcome to Coffee Bliss Cafe ☕";
-        else if(lowerMsg.includes("menu")) botReply = "We serve Coffee, Espresso, Latte, Cappuccino, Muffins, and Sandwiches.";
-        else if(lowerMsg.includes("hours") || lowerMsg.includes("open")) botReply = "We are open from 8 AM to 8 PM, Monday to Sunday.";
-        else if(lowerMsg.includes("location")) botReply = "We are at 123 Coffee Street, Brewtown.";
-
-        // Display bot message
-        const botMsgDiv = document.createElement('div');
-        botMsgDiv.className = 'bot-msg';
-        botMsgDiv.textContent = botReply;
-        chatMessages.appendChild(botMsgDiv);
-
-        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
     }
-</script>
+  </script>
+  <style>
+    body {
+      background-color: #0B0F17;
+      color: #FFFFFF;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #0B0F17;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #1E293B;
+      border-radius: 3px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #334155;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-[#0B0F17] text-white selection:bg-emerald-500/30 selection:text-emerald-300">
 
+  <!-- TOP ANNOUNCEMENT BAR -->
+  <div class="w-full bg-[#111827] border-b border-[#1E293B] py-2 px-4 text-xs md:text-sm font-medium text-slate-300">
+    <div class="max-w-7xl mx-auto flex items-center justify-center gap-2">
+      <!-- Static emerald indicator, strictly static as requested -->
+      <span class="inline-block w-2 h-2 rounded-full bg-[#22C55E] flex-shrink-0" aria-hidden="true"></span>
+      <span class="text-center">Async-first collaboration. Clear communication without unnecessary meetings.</span>
+    </div>
+  </div>
+
+  <!-- STICKY NAVBAR -->
+  <header class="sticky top-0 z-40 w-full bg-[#0B0F17]/90 backdrop-blur-md border-b border-[#1E293B]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-[#22C55E] rounded-lg px-1">
+        <div class="w-9 h-9 rounded-full overflow-hidden border border-[#22C55E]/40 group-hover:border-[#22C55E] transition-colors flex-shrink-0">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnjkuJbbcG0k5pimciKuqvmdqz3f8KVY8zx1FrhrX0kt599cjbx9jXJsMME8qyvzbVeQkfluchsKyFduTnAHVxG4CTVWQTtcR3z80tnn9tcUiBGYb6tu9R6XCCJbgl3k2uGfIS874vzs-75Z2gVSLy7sp-C2ZUXRV9A5GDoYTjo-LuDs-axz-KvpyoyFUD7Ka8-ECAwxk04fZla1haJdWZ3mCeED1vYvPZ2vHqJ6P8hMFQw-a2MFwF" alt="Aleeza Shaheen headshot" class="w-full h-full object-cover">
+        </div>
+        <div>
+          <span class="text-lg font-bold tracking-tight text-white group-hover:text-emerald-400 transition-colors">Aleeza Shaheen</span>
+          <span class="hidden sm:block text-[11px] text-gray-400 font-normal leading-none mt-0.5">B2B LinkedIn Ghostwriter</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300" aria-label="Main Navigation">
+        <a href="#work" class="hover:text-white transition-colors focus:outline-none focus:text-[#22C55E]">Work</a>
+        <a href="#samples" class="hover:text-white transition-colors focus:outline-none focus:text-[#22C55E]">Samples</a>
+        <a href="#services" class="hover:text-white transition-colors focus:outline-none focus:text-[#22C55E]">Services</a>
+        <a href="#feedback" class="hover:text-white transition-colors focus:outline-none focus:text-[#22C55E]">Client Feedback</a>
+        <a href="#process" class="hover:text-white transition-colors focus:outline-none focus:text-[#22C55E]">Process</a>
+        <a href="#faq" class="hover:text-white transition-colors focus:outline-none focus:text-[#22C55E]">FAQ</a>
+      </nav>
+
+      <!-- Desktop Message Me CTA -->
+      <div class="hidden md:flex items-center gap-3">
+        <a href="https://www.linkedin.com/in/aleeza-shaheen-98b3b53a5" target="_blank" rel="noopener noreferrer" 
+           class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#22C55E] hover:bg-[#1ea34d] text-slate-950 font-semibold text-sm transition-all duration-150 shadow-sm shadow-[#22C55E]/10 focus:outline-none focus:ring-2 focus:ring-[#22C55E] focus:ring-offset-2 focus:ring-offset-[#0B0F17]">
+          <span>Message Me</span>
+          <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobileMenuBtn" type="button" class="md:hidden p-2 rounded-lg text-gray-400 hover:text-white hover:bg-[#151C29] border border-[#1E293B] focus:outline-none focus:ring-2 focus:ring-[#22C55E]" aria-label="Toggle mobile menu" aria-expanded="false">
+        <i data-lucide="menu" id="menuIcon" class="w-5 h-5"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div id="mobileMenu" class="hidden md:hidden border-b border-[#1E293B] bg-[#0E1420] px-4 pt-3 pb-6 transition-all duration-200">
+      <nav class="flex flex-col space-y-3 text-base font-medium text-gray-300">
+        <a href="#work" class="mobile-nav-link py-2 px-3 rounded-md hover:bg-[#151C29] hover:text-white">Work</a>
+        <a href="#samples" class="mobile-nav-link py-2 px-3 rounded-md hover:bg-[#151C29] hover:text-white">Samples</a>
+        <a href="#services" class="mobile-nav-link py-2 px-3 rounded-md hover:bg-[#151C29] hover:text-white">Services</a>
+        <a href="#feedback" class="mobile-nav-link py-2 px-3 rounded-md hover:bg-[#151C29] hover:text-white">Client Feedback</a>
+        <a href="#process" class="mobile-nav-link py-2 px-3 rounded-md hover:bg-[#151C29] hover:text-white">Process</a>
+        <a href="#faq" class="mobile-nav-link py-2 px-3 rounded-md hover:bg-[#151C29] hover:text-white">FAQ</a>
+        <a href="https://www.linkedin.com/in/aleeza-shaheen-98b3b53a5" target="_blank" rel="noopener noreferrer" 
+           class="mt-2 inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-lg bg-[#22C55E] text-slate-950 font-semibold text-sm">
+          <span>Message Me on LinkedIn</span>
+          <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="relative pt-12 pb-20 md:pt-20 md:pb-28 border-b border-[#1E293B] overflow-hidden">
+      <!-- Subtle ambient lighting -->
+      <div class="absolute top-1/4 left-1/4 -translate-x-1/2 w-96 h-96 bg-[#22C55E]/5 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          
+          <!-- LEFT COLUMN (Text & Actions) -->
+          <div class="lg:col-span-7 flex flex-col justify-center">
+            <!-- Small Label -->
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#151C29] border border-[#1E293B] text-xs font-semibold text-[#22C55E] tracking-wider uppercase mb-6 self-start">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#22C55E]"></span>
+              B2B LINKEDIN GHOSTWRITER
+            </div>
+
+            <!-- Main Headline -->
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.12] mb-6">
+              Turn your expertise into LinkedIn content that builds authority.
+            </h1>
+
+            <!-- Supporting Paragraph -->
+            <p class="text-lg sm:text-xl text-[#9CA3AF] leading-relaxed mb-8 max-w-2xl font-normal">
+              I help B2B founders, CEOs, and technical experts turn their real-world experience into thoughtful LinkedIn content—without spending hours writing every week.
+            </p>
+
+            <!-- Three Concise Value Points -->
+            <div class="space-y-3.5 mb-10">
+              <div class="flex items-center gap-3 text-sm sm:text-base text-gray-200">
+                <div class="w-5 h-5 rounded-full bg-[#22C55E]/10 border border-[#22C55E]/30 flex items-center justify-center flex-shrink-0 text-[#22C55E]">
+                  <i data-lucide="check" class="w-3.5 h-3.5 stroke-[3]"></i>
+                </div>
+                <span>Human-written LinkedIn content</span>
+              </div>
+              <div class="flex items-center gap-3 text-sm sm:text-base text-gray-200">
+                <div class="w-5 h-5 rounded-full bg-[#22C55E]/10 border border-[#22C55E]/30 flex items-center justify-center flex-shrink-0 text-[#22C55E]">
+                  <i data-lucide="check" class="w-3.5 h-3.5 stroke-[3]"></i>
+                </div>
+                <span>Content shaped around the client's expertise and voice</span>
+              </div>
+              <div class="flex items-center gap-3 text-sm sm:text-base text-gray-200">
+                <div class="w-5 h-5 rounded-full bg-[#22C55E]/10 border border-[#22C55E]/30 flex items-center justify-center flex-shrink-0 text-[#22C55E]">
+                  <i data-lucide="check" class="w-3.5 h-3.5 stroke-[3]"></i>
+                </div>
+                <span>An async-first working process</span>
+              </div>
+            </div>
+
+            <!-- CTAs -->
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-6">
+              <a href="https://www.linkedin.com/in/aleeza-shaheen-98b3b53a5" target="_blank" rel="noopener noreferrer"
+                 class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-[#22C55E] hover:bg-[#1ea34d] text-slate-950 font-bold text-base transition-colors shadow-lg shadow-[#22C55E]/10 focus:outline-none focus:ring-2 focus:ring-[#22C55E] focus:ring-offset-2 focus:ring-offset-[#0B0F17]">
+                <span>Request a Free Custom Sample</span>
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </a>
+              <a href="#work"
+                 class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-lg bg-[#151C29] hover:bg-[#1E293B] text-white font-medium text-base border border-[#1E293B] hover:border-slate-600 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-500">
+                <span>Explore My Work</span>
+                <i data-lucide="arrow-down" class="w-4 h-4"></i>
+              </a>
+            </div>
+
+            <!-- Supporting Microcopy -->
+            <p class="text-xs sm:text-sm text-gray-400 flex items-center gap-2">
+              <span class="inline-block w-1.5 h-1.5 rounded-full bg-slate-600"></span>
+              <span>Text-first communication &middot; Custom writing &middot; Google Docs delivery</span>
+            </p>
+          </div>
+
+          <!-- RIGHT COLUMN (ASSET 1: Authentic Profile Card) -->
+          <div class="lg:col-span-5 flex justify-center lg:justify-end">
+            <div class="w-full max-w-md bg-[#151C29] border border-[#1E293B] rounded-2xl p-6 sm:p-7 shadow-2xl relative overflow-hidden group">
+              <!-- Subtle decorative accent top bar -->
+              <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500/50 via-[#22C55E] to-emerald-500/20"></div>
+
+              <!-- Profile Image Container: Preserving actual appearance with natural crop -->
+              <div class="relative w-full aspect-[4/4.2] rounded-xl overflow-hidden mb-6 bg-slate-900 border border-[#1E293B]">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnjkuJbbcG0k5pimciKuqvmdqz3f8KVY8zx1FrhrX0kt599cjbx9jXJsMME8qyvzbVeQkfluchsKyFduTnAHVxG4CTVWQTtcR3z80tnn9tcUiBGYb6tu9R6XCCJbgl3k2uGfIS874vzs-75Z2gVSLy7sp-C2ZUXRV9A5GDoYTjo-LuDs-axz-KvpyoyFUD7Ka8-ECAwxk04fZla1haJdWZ3mCeED1vYvPZ2vHqJ6P8hMFQw-a2MFwF" 
+                     alt="Aleeza Shaheen - B2B LinkedIn Ghostwriter and Personal Brand Strategist" 
+                     class="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-300">
+                <div class="absolute bottom-3 right-3 bg-[#0B0F17]/90 backdrop-blur-sm border border-[#1E293B] text-[11px] font-medium text-emerald-400 px-2.5 py-1 rounded-full flex items-center gap-1.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#22C55E]"></span>
+                  <span>Available for New Projects</span>
+                </div>
+              </div>
+
+              <!-- Profile Details -->
+              <div class="space-y-2">
+                <div class="flex items-center justify-between">
+                  <h2 class="text-2xl font-bold text-white tracking-tight">Aleeza Shaheen</h2>
+                  <a href="https://www.linkedin.com/in/aleeza-shaheen-98b3b53a5" target="_blank" rel="noopener noreferrer" 
+                     class="text-gray-400 hover:text-[#22C55E] transition-colors p-1.5 rounded-md hover:bg-[#1E293B]" title="View LinkedIn Profile">
+                    <i data-lucide="linkedin" class="w-5 h-5"></i>
+                  </a>
+                </div>
+                <p class="text-sm font-semibold text-[#22C55E]">
+                  B2B LinkedIn Ghostwriter &amp; Personal Brand Strategist
+                </p>
+                <blockquote class="text-sm text-[#9CA3AF] italic pt-2 border-t border-[#1E293B] leading-relaxed">
+                  &ldquo;Helping experts communicate what they know.&rdquo;
+                </blockquote>
+              </div>
+
+              <!-- Social link / Async badge -->
+              <div class="mt-5 pt-4 border-t border-[#1E293B]/70 flex items-center justify-between text-xs text-gray-400">
+                <span class="flex items-center gap-1.5">
+                  <i data-lucide="message-square" class="w-3.5 h-3.5 text-[#22C55E]"></i>
+                  Async &amp; Text-First
+                </span>
+                <span class="flex items-center gap-1.5">
+                  <i data-lucide="file-text" class="w-3.5 h-3.5 text-[#22C55E]"></i>
+                  Google Docs Delivery
+                </span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- TRUST AND POSITIONING SECTION -->
+    <section class="py-16 md:py-20 bg-[#111827] border-b border-[#1E293B]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <span class="inline-block text-xs font-semibold uppercase tracking-wider text-[#22C55E] mb-3">Positioning</span>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight leading-snug mb-6">
+          Good Ideas Deserve to Be Communicated Clearly.
+        </h2>
+        <p class="text-base sm:text-lg text-[#9CA3AF] leading-relaxed font-normal">
+          Founders and technical experts often have valuable experience to share, but turning that knowledge into consistent LinkedIn content takes time. I help shape their ideas into clear, relevant posts while keeping their voice and perspective at the centre.
+        </p>
+      </div>
+    </section>
+
+    <!-- FEATURED WORK (ASSET 2: Real Client Work) -->
+    <section id="work" class="py-20 md:py-28 border-b border-[#1E293B] relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+          <div>
+            <span class="text-xs font-semibold uppercase tracking-wider text-[#22C55E] block mb-2">Portfolio</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Selected Work</h2>
+            <p class="text-[#9CA3AF] mt-2 text-base max-w-xl">
+              A look at how I turn professional expertise into LinkedIn content.
+            </p>
+          </div>
+          <div class="text-xs text-gray-400 bg-[#151C29] px-3.5 py-1.5 rounded-lg border border-[#1E293B] self-start md:self-auto">
+            Click image to view in high resolution
+          </div>
+        </div>
+
+        <!-- Featured Project Card with ASSET 2 (Real Client Work) -->
+        <div class="bg-[#151C29] border border-[#1E293B] rounded-2xl overflow-hidden shadow-xl hover:border-slate-700 transition-all">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 items-center">
+            
+            <!-- Left Info Panel -->
+            <div class="lg:col-span-5 p-6 sm:p-10 flex flex-col justify-between h-full border-b lg:border-b-0 lg:border-r border-[#1E293B]">
+              <div>
+                <!-- Primary Badge -->
+                <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-[#22C55E]/10 border border-[#22C55E]/30 text-[#22C55E] text-xs font-bold tracking-wider uppercase mb-5">
+                  <i data-lucide="badge-check" class="w-3.5 h-3.5"></i>
+                  <span>REAL CLIENT WORK</span>
+                </div>
+
+                <h3 class="text-2xl sm:text-3xl font-bold text-white tracking-tight mb-4">
+                  Published LinkedIn Content
+                </h3>
+
+                <p class="text-base text-[#9CA3AF] leading-relaxed mb-6">
+                  A LinkedIn post written for a real client and published on their profile.
+                </p>
+
+                <div class="space-y-3 bg-[#0B0F17]/60 p-4 rounded-xl border border-[#1E293B] mb-8 text-sm">
+                  <div class="flex items-start gap-2.5">
+                    <i data-lucide="user-check" class="w-4 h-4 text-[#22C55E] flex-shrink-0 mt-0.5"></i>
+                    <span class="text-gray-300"><strong class="text-white">Format:</strong> Thought leadership post published directly by the client.</span>
+                  </div>
+                  <div class="flex items-start gap-2.5">
+                    <i data-lucide="feather" class="w-4 h-4 text-[#22C55E] flex-shrink-0 mt-0.5"></i>
+                    <span class="text-gray-300"><strong class="text-white">Style:</strong> Authentic narrative addressing professional development, leadership, and institutional purpose.</span>
+                  </div>
+                  <div class="flex items-start gap-2.5">
+                    <i data-lucide="sparkles" class="w-4 h-4 text-[#22C55E] flex-shrink-0 mt-0.5"></i>
+                    <span class="text-gray-300"><strong class="text-white">Collaboration:</strong> Idea structured from client input into clear, impactful prose.</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Interaction Buttons -->
+              <div class="pt-4 border-t border-[#1E293B] flex flex-wrap items-center gap-3">
+                <button type="button" 
+                        onclick="openModal('https://lh3.googleusercontent.com/aida-public/AB6AXuCgHu2tojP8T0kbctUIAZzrcJMRzDOJFFLi6eLsiTIHUxIO8lZspWIAqyaUktxvKBl2p7lkouOx1tfZ7wHhzPbC009ed348ckNCN_-6QTuXDz_CeCgqqESRQ5TzymAA1pBiZz55wR5QFtQ7Mu_YWjMy-oTP3Fl2N50x2MgfCEX-caeKeY-S9xfN8_7ONfT--JXbz3sELpe3RLVMUa-Itm-y2M8XM__GSVdv909h-njjQsO6H-Yc21SS', 'Real Client Work: Published LinkedIn Content')" 
+                        class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#22C55E] hover:bg-[#1ea34d] text-slate-950 font-semibold text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-[#22C55E]">
+                  <i data-lucide="zoom-in" class="w-4 h-4"></i>
+                  <span>Inspect Full Post</span>
+                </button>
+                <span class="text-xs text-gray-400 italic">Published on client's public profile</span>
+              </div>
+            </div>
+
+            <!-- Right Screenshot Display -->
+            <div class="lg:col-span-7 p-4 sm:p-8 bg-[#0E1420] flex items-center justify-center">
+              <div class="relative w-full max-w-lg cursor-pointer group" onclick="openModal('https://lh3.googleusercontent.com/aida-public/AB6AXuCgHu2tojP8T0kbctUIAZzrcJMRzDOJFFLi6eLsiTIHUxIO8lZspWIAqyaUktxvKBl2p7lkouOx1tfZ7wHhzPbC009ed348ckNCN_-6QTuXDz_CeCgqqESRQ5TzymAA1pBiZz55wR5QFtQ7Mu_YWjMy-oTP3Fl2N50x2MgfCEX-caeKeY-S9xfN8_7ONfT--JXbz3sELpe3RLVMUa-Itm-y2M8XM__GSVdv909h-njjQsO6H-Yc21SS', 'Real Client Work: Published LinkedIn Post')">
+                <div class="overflow-hidden rounded-xl border border-[#1E293B] bg-white shadow-lg transition-transform duration-200 group-hover:scale-[1.01]">
+                  <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgHu2tojP8T0kbctUIAZzrcJMRzDOJFFLi6eLsiTIHUxIO8lZspWIAqyaUktxvKBl2p7lkouOx1tfZ7wHhzPbC009ed348ckNCN_-6QTuXDz_CeCgqqESRQ5TzymAA1pBiZz55wR5QFtQ7Mu_YWjMy-oTP3Fl2N50x2MgfCEX-caeKeY-S9xfN8_7ONfT--JXbz3sELpe3RLVMUa-Itm-y2M8XM__GSVdv909h-njjQsO6H-Yc21SS" 
+                       alt="Real Client Work: Published LinkedIn post written by Aleeza Shaheen for Dr. Humphrey Akanazu discussing professional development and leadership" 
+                       class="w-full h-auto object-contain block max-h-[580px] mx-auto">
+                </div>
+                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity rounded-xl flex items-center justify-center pointer-events-none">
+                  <span class="bg-[#151C29] border border-[#1E293B] text-white text-xs font-semibold px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-lg">
+                    <i data-lucide="maximize-2" class="w-3.5 h-3.5 text-[#22C55E]"></i>
+                    Click to enlarge post
+                  </span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- WRITING SAMPLES (ASSETS 3, 4, 5: Fictional-Founder Writing Samples) -->
+    <section id="samples" class="py-20 md:py-28 bg-[#111827] border-b border-[#1E293B]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="max-w-3xl mb-12">
+          <span class="text-xs font-semibold uppercase tracking-wider text-[#22C55E] block mb-2">Style Explorations</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">More Writing Samples</h2>
+          <p class="text-[#9CA3AF] mt-2 text-base">
+            Examples of different writing approaches, presented to demonstrate my style and range.
+          </p>
+        </div>
+
+        <!-- 3-Card Responsive Gallery -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          
+          <!-- Sample 1: Marcus Holt (Loopkit / Product-Led Growth) -> ASSET 5: https://lh3.googleusercontent.com/aida-public/AB6AXuAn5JyIHhc7UQM1BiwcAy0nAU8puFrkWlbRyGMrmXJoxspGk1vQm9XX-0iIBNtgDWBZyHySYYowUD_Pe-rDHqo5E0xUt_0S72FV0xdr6vriF_7hzpJrSoGmclB1pvwi5lhNJ6Yxn02fzSJSFMVm4kXnsCyy_DYlOobX8j9wt2nOg2lbmo8J23dtmvGqt2P_uccCknvW3cfm685U0ONQs0C78s8l0SU3gm0AaPCpcXYSYfLeu3raDYZC -->
+          <div class="bg-[#151C29] border border-[#1E293B] rounded-2xl flex flex-col justify-between overflow-hidden hover:border-slate-700 transition-all shadow-md group">
+            <div class="p-6 border-b border-[#1E293B]">
+              <div class="flex items-center justify-between mb-3">
+                <span class="inline-block px-2.5 py-1 rounded bg-slate-800 text-slate-300 text-[11px] font-semibold tracking-wider uppercase border border-slate-700">
+                  SPECULATIVE WRITING SAMPLE
+                </span>
+                <span class="text-xs text-gray-400">PLG &amp; Product Strategy</span>
+              </div>
+              <h3 class="text-lg font-bold text-white tracking-tight group-hover:text-emerald-400 transition-colors">
+                Product-Led Growth &amp; Feature Pruning
+              </h3>
+              <p class="text-xs text-[#9CA3AF] mt-1.5 leading-relaxed">
+                Demonstrating clear, narrative storytelling around metrics, customer churn, and practical SaaS product decisions.
+              </p>
+            </div>
+
+            <!-- Image Area -->
+            <div class="p-4 bg-[#0B0F17] flex-1 flex items-center justify-center cursor-pointer" onclick="openModal('https://lh3.googleusercontent.com/aida-public/AB6AXuAn5JyIHhc7UQM1BiwcAy0nAU8puFrkWlbRyGMrmXJoxspGk1vQm9XX-0iIBNtgDWBZyHySYYowUD_Pe-rDHqo5E0xUt_0S72FV0xdr6vriF_7hzpJrSoGmclB1pvwi5lhNJ6Yxn02fzSJSFMVm4kXnsCyy_DYlOobX8j9wt2nOg2lbmo8J23dtmvGqt2P_uccCknvW3cfm685U0ONQs0C78s8l0SU3gm0AaPCpcXYSYfLeu3raDYZC', 'Speculative Writing Sample: Product-Led Growth &amp; Feature Pruning')">
+              <div class="w-full bg-white rounded-lg overflow-hidden border border-[#1E293B]">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAn5JyIHhc7UQM1BiwcAy0nAU8puFrkWlbRyGMrmXJoxspGk1vQm9XX-0iIBNtgDWBZyHySYYowUD_Pe-rDHqo5E0xUt_0S72FV0xdr6vriF_7hzpJrSoGmclB1pvwi5lhNJ6Yxn02fzSJSFMVm4kXnsCyy_DYlOobX8j9wt2nOg2lbmo8J23dtmvGqt2P_uccCknvW3cfm685U0ONQs0C78s8l0SU3gm0AaPCpcXYSYfLeu3raDYZC" 
+                     alt="Speculative writing sample for Marcus Holt demonstrating writing on SaaS activation and feature roadmaps" 
+                     class="w-full h-auto object-cover max-h-[340px] block transition-transform duration-200 group-hover:scale-[1.01]">
+              </div>
+            </div>
+
+            <div class="p-4 bg-[#151C29] border-t border-[#1E293B] flex items-center justify-between">
+              <span class="text-xs text-gray-400">Narrative &amp; metrics style</span>
+              <button type="button" 
+                      onclick="openModal('https://lh3.googleusercontent.com/aida-public/AB6AXuAn5JyIHhc7UQM1BiwcAy0nAU8puFrkWlbRyGMrmXJoxspGk1vQm9XX-0iIBNtgDWBZyHySYYowUD_Pe-rDHqo5E0xUt_0S72FV0xdr6vriF_7hzpJrSoGmclB1pvwi5lhNJ6Yxn02fzSJSFMVm4kXnsCyy_DYlOobX8j9wt2nOg2lbmo8J23dtmvGqt2P_uccCknvW3cfm685U0ONQs0C78s8l0SU3gm0AaPCpcXYSYfLeu3raDYZC', 'Speculative Writing Sample: Product-Led Growth &amp; Feature Pruning')" 
+                      class="inline-flex items-center gap-1.5 text-xs font-semibold text-[#22C55E] hover:text-emerald-400 transition-colors focus:outline-none">
+                <span>View Sample</span>
+                <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Sample 2: Ryan Callahan (Stackline HQ / B2B SaaS Churn) -> ASSET 4: https://lh3.googleusercontent.com/aida-public/AB6AXuDRMfvVeN5WFf_mliE6xWg3nZsuiJF3vu9Lm2Qq1bDzqKJOb8TH4lZpsZgxHe3dSA772DWtJrtwYxXtRfZJhXYEepFo_2O0fikjt-3R7KJiaWZiGqeIxEK8oNHBIfSL2HsrmtEnqpZ8PlL53RW5ZHTBlRi_BhMD0Nzk7Q8xWWfqe0SRPMiAmsH8vNNCIcTunlkOPIioBfRlYnP3pmWTS1MVeJxKQZOnpSzM4u-rq9sZoXTSm5KL6ONM -->
+          <div class="bg-[#151C29] border border-[#1E293B] rounded-2xl flex flex-col justify-between overflow-hidden hover:border-slate-700 transition-all shadow-md group">
+            <div class="p-6 border-b border-[#1E293B]">
+              <div class="flex items-center justify-between mb-3">
+                <span class="inline-block px-2.5 py-1 rounded bg-slate-800 text-slate-300 text-[11px] font-semibold tracking-wider uppercase border border-slate-700">
+                  SPECULATIVE WRITING SAMPLE
+                </span>
+                <span class="text-xs text-gray-400">Customer Retention &amp; Ops</span>
+              </div>
+              <h3 class="text-lg font-bold text-white tracking-tight group-hover:text-emerald-400 transition-colors">
+                B2B Customer Churn &amp; Qualitative Feedback
+              </h3>
+              <p class="text-xs text-[#9CA3AF] mt-1.5 leading-relaxed">
+                Examining the quiet loss of enterprise customers through punchy, candid, and reflective executive communication.
+              </p>
+            </div>
+
+            <!-- Image Area -->
+            <div class="p-4 bg-[#0B0F17] flex-1 flex items-center justify-center cursor-pointer" onclick="openModal('https://lh3.googleusercontent.com/aida-public/AB6AXuDRMfvVeN5WFf_mliE6xWg3nZsuiJF3vu9Lm2Qq1bDzqKJOb8TH4lZpsZgxHe3dSA772DWtJrtwYxXtRfZJhXYEepFo_2O0fikjt-3R7KJiaWZiGqeIxEK8oNHBIfSL2HsrmtEnqpZ8PlL53RW5ZHTBlRi_BhMD0Nzk7Q8xWWfqe0SRPMiAmsH8vNNCIcTunlkOPIioBfRlYnP3pmWTS1MVeJxKQZOnpSzM4u-rq9sZoXTSm5KL6ONM', 'Speculative Writing Sample: B2B Customer Churn &amp; Qualitative Feedback')">
+              <div class="w-full bg-white rounded-lg overflow-hidden border border-[#1E293B]">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRMfvVeN5WFf_mliE6xWg3nZsuiJF3vu9Lm2Qq1bDzqKJOb8TH4lZpsZgxHe3dSA772DWtJrtwYxXtRfZJhXYEepFo_2O0fikjt-3R7KJiaWZiGqeIxEK8oNHBIfSL2HsrmtEnqpZ8PlL53RW5ZHTBlRi_BhMD0Nzk7Q8xWWfqe0SRPMiAmsH8vNNCIcTunlkOPIioBfRlYnP3pmWTS1MVeJxKQZOnpSzM4u-rq9sZoXTSm5KL6ONM" 
+                     alt="Speculative writing sample for Ryan Callahan demonstrating writing on customer churn and customer interviews" 
+                     class="w-full h-auto object-cover max-h-[340px] block transition-transform duration-200 group-hover:scale-[1.01]">
+              </div>
+            </div>
+
+            <div class="p-4 bg-[#151C29] border-t border-[#1E293B] flex items-center justify-between">
+              <span class="text-xs text-gray-400">Analytical &amp; vulnerable tone</span>
+              <button type="button" 
+                      onclick="openModal('https://lh3.googleusercontent.com/aida-public/AB6AXuDRMfvVeN5WFf_mliE6xWg3nZsuiJF3vu9Lm2Qq1bDzqKJOb8TH4lZpsZgxHe3dSA772DWtJrtwYxXtRfZJhXYEepFo_2O0fikjt-3R7KJiaWZiGqeIxEK8oNHBIfSL2HsrmtEnqpZ8PlL53RW5ZHTBlRi_BhMD0Nzk7Q8xWWfqe0SRPMiAmsH8vNNCIcTunlkOPIioBfRlYnP3pmWTS1MVeJxKQZOnpSzM4u-rq9sZoXTSm5KL6ONM', 'Speculative Writing Sample: B2B Customer Churn &amp; Qualitative Feedback')" 
+                      class="inline-flex items-center gap-1.5 text-xs font-semibold text-[#22C55E] hover:text-emerald-400 transition-colors focus:outline-none">
+                <span>View Sample</span>
+                <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Sample 3: James Whitfield (Crevio / Sales Leadership) -> ASSET 3: https://lh3.googleusercontent.com/aida-public/AB6AXuBnNunFYOqNacoENrMp443Zk3_2FiObeG07fClkaNEIdOx4ZRVyd6pks6qhmbzd-Jku4lmISMCo-QajgTnYzCdtT8kB0clyzEQuUBBvG69RGS4996PJP49NLKbDBOHJLUXjibGi7chhC36vJSQRJo8KWfajJzVfGv1cMPSpIU2oNJ86ifCfiDp7Sz_hQyLDXveLO75exzmdPUFS5w6BFwdUUc_HQV50Ci7BsPjweUQhiYuMvvwLVuIL -->
+          <div class="bg-[#151C29] border border-[#1E293B] rounded-2xl flex flex-col justify-between overflow-hidden hover:border-slate-700 transition-all shadow-md group">
+            <div class="p-6 border-b border-[#1E293B]">
+              <div class="flex items-center justify-between mb-3">
+                <span class="inline-block px-2.5 py-1 rounded bg-slate-800 text-slate-300 text-[11px] font-semibold tracking-wider uppercase border border-slate-700">
+                  SPECULATIVE WRITING SAMPLE
+                </span>
+                <span class="text-xs text-gray-400">Founder Hiring &amp; Sales</span>
+              </div>
+              <h3 class="text-lg font-bold text-white tracking-tight group-hover:text-emerald-400 transition-colors">
+                Early-Stage Hiring &amp; Stage-Fit Lessons
+              </h3>
+              <p class="text-xs text-[#9CA3AF] mt-1.5 leading-relaxed">
+                Illustrating actionable lessons on startup hiring mistakes, runway management, and stage-appropriate sales strategy.
+              </p>
+            </div>
+
+            <!-- Image Area -->
+            <div class="p-4 bg-[#0B0F17] flex-1 flex items-center justify-center cursor-pointer" onclick="openModal('https://lh3.googleusercontent.com/aida-public/AB6AXuBnNunFYOqNacoENrMp443Zk3_2FiObeG07fClkaNEIdOx4ZRVyd6pks6qhmbzd-Jku4lmISMCo-QajgTnYzCdtT8kB0clyzEQuUBBvG69RGS4996PJP49NLKbDBOHJLUXjibGi7chhC36vJSQRJo8KWfajJzVfGv1cMPSpIU2oNJ86ifCfiDp7Sz_hQyLDXveLO75exzmdPUFS5w6BFwdUUc_HQV50Ci7BsPjweUQhiYuMvvwLVuIL', 'Speculative Writing Sample: Early-Stage Hiring &amp; Stage-Fit Lessons')">
+              <div class="w-full bg-white rounded-lg overflow-hidden border border-[#1E293B]">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnNunFYOqNacoENrMp443Zk3_2FiObeG07fClkaNEIdOx4ZRVyd6pks6qhmbzd-Jku4lmISMCo-QajgTnYzCdtT8kB0clyzEQuUBBvG69RGS4996PJP49NLKbDBOHJLUXjibGi7chhC36vJSQRJo8KWfajJzVfGv1cMPSpIU2oNJ86ifCfiDp7Sz_hQyLDXveLO75exzmdPUFS5w6BFwdUUc_HQV50Ci7BsPjweUQhiYuMvvwLVuIL" 
+                     alt="Speculative writing sample for James Whitfield demonstrating lessons learned on hiring VP of Sales" 
+                     class="w-full h-auto object-cover max-h-[340px] block transition-transform duration-200 group-hover:scale-[1.01]">
+              </div>
+            </div>
+
+            <div class="p-4 bg-[#151C29] border-t border-[#1E293B] flex items-center justify-between">
+              <span class="text-xs text-gray-400">Direct &amp; practical advice</span>
+              <button type="button" 
+                      onclick="openModal('https://lh3.googleusercontent.com/aida-public/AB6AXuBnNunFYOqNacoENrMp443Zk3_2FiObeG07fClkaNEIdOx4ZRVyd6pks6qhmbzd-Jku4lmISMCo-QajgTnYzCdtT8kB0clyzEQuUBBvG69RGS4996PJP49NLKbDBOHJLUXjibGi7chhC36vJSQRJo8KWfajJzVfGv1cMPSpIU2oNJ86ifCfiDp7Sz_hQyLDXveLO75exzmdPUFS5w6BFwdUUc_HQV50Ci7BsPjweUQhiYuMvvwLVuIL', 'Speculative Writing Sample: Early-Stage Hiring &amp; Stage-Fit Lessons')" 
+                      class="inline-flex items-center gap-1.5 text-xs font-semibold text-[#22C55E] hover:text-emerald-400 transition-colors focus:outline-none">
+                <span>View Sample</span>
+                <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="py-20 md:py-28 border-b border-[#1E293B]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="max-w-3xl mb-16">
+          <span class="text-xs font-semibold uppercase tracking-wider text-[#22C55E] block mb-2">Capabilities</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">What I Can Help You With</h2>
+          <p class="text-[#9CA3AF] mt-2 text-base">
+            Focused writing and strategy services designed for leaders who value clarity and respect their time.
+          </p>
+        </div>
+
+        <!-- 4 Service Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+          
+          <!-- Card 1 -->
+          <div class="bg-[#151C29] border border-[#1E293B] p-8 rounded-2xl hover:border-slate-700 transition-all flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-[#22C55E]/10 border border-[#22C55E]/20 flex items-center justify-center text-[#22C55E] mb-6">
+                <i data-lucide="pen-tool" class="w-6 h-6"></i>
+              </div>
+              <h3 class="text-xl font-bold text-white tracking-tight mb-3">LINKEDIN GHOSTWRITING</h3>
+              <p class="text-base text-[#9CA3AF] leading-relaxed">
+                Thoughtful LinkedIn posts shaped around your expertise, experiences, ideas, and natural communication style.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-[#1E293B]/70 flex items-center gap-2 text-xs font-medium text-gray-400">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#22C55E]"></span>
+              <span>Tailored tone &middot; Clear hooks &middot; Zero fluff</span>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="bg-[#151C29] border border-[#1E293B] p-8 rounded-2xl hover:border-slate-700 transition-all flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-[#22C55E]/10 border border-[#22C55E]/20 flex items-center justify-center text-[#22C55E] mb-6">
+                <i data-lucide="compass" class="w-6 h-6"></i>
+              </div>
+              <h3 class="text-xl font-bold text-white tracking-tight mb-3">CONTENT STRATEGY</h3>
+              <p class="text-base text-[#9CA3AF] leading-relaxed">
+                Relevant topics and content themes that help you communicate consistently and stay focused on your audience.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-[#1E293B]/70 flex items-center gap-2 text-xs font-medium text-gray-400">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#22C55E]"></span>
+              <span>Pillar design &middot; Editorial calendar &middot; Audience alignment</span>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="bg-[#151C29] border border-[#1E293B] p-8 rounded-2xl hover:border-slate-700 transition-all flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-[#22C55E]/10 border border-[#22C55E]/20 flex items-center justify-center text-[#22C55E] mb-6">
+                <i data-lucide="target" class="w-6 h-6"></i>
+              </div>
+              <h3 class="text-xl font-bold text-white tracking-tight mb-3">EXECUTIVE POSITIONING</h3>
+              <p class="text-base text-[#9CA3AF] leading-relaxed">
+                Clearer communication of your perspective, professional expertise, and value.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-[#1E293B]/70 flex items-center gap-2 text-xs font-medium text-gray-400">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#22C55E]"></span>
+              <span>Authority building &middot; Thought leadership &middot; Point of view</span>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="bg-[#151C29] border border-[#1E293B] p-8 rounded-2xl hover:border-slate-700 transition-all flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl bg-[#22C55E]/10 border border-[#22C55E]/20 flex items-center justify-center text-[#22C55E] mb-6">
+                <i data-lucide="layout" class="w-6 h-6"></i>
+              </div>
+              <h3 class="text-xl font-bold text-white tracking-tight mb-3">CUSTOM POST VISUALS</h3>
+              <p class="text-base text-[#9CA3AF] leading-relaxed">
+                Clean, relevant visuals that support the message and make posts easier to follow.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-[#1E293B]/70 flex items-center gap-2 text-xs font-medium text-gray-400">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#22C55E]"></span>
+              <span>Clean typography cards &middot; Carousels &middot; Visual hierarchy</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- WHO I WORK WITH SECTION -->
+    <section class="py-20 md:py-28 bg-[#111827] border-b border-[#1E293B]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="max-w-3xl mb-16">
+          <span class="text-xs font-semibold uppercase tracking-wider text-[#22C55E] block mb-2">Ideal Fit</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Who I Work With</h2>
+          <p class="text-[#9CA3AF] mt-2 text-base">
+            I partner with leaders who have substance to communicate and want a sustainable workflow.
+          </p>
+        </div>
+
+        <!-- 3 Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          
+          <!-- Fit 1 -->
+          <div class="bg-[#151C29] border border-[#1E293B] p-7 rounded-2xl flex flex-col justify-between hover:border-slate-700 transition-all">
+            <div>
+              <div class="w-10 h-10 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center text-emerald-400 mb-5">
+                <i data-lucide="building-2" class="w-5 h-5"></i>
+              </div>
+              <h3 class="text-lg font-bold text-white tracking-tight mb-3">B2B AND SAAS FOUNDERS</h3>
+              <p class="text-sm text-[#9CA3AF] leading-relaxed">
+                You have industry insights, customer knowledge, and ideas worth sharing. I help turn them into LinkedIn content without adding another writing task to your week.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-[#1E293B]/70 text-xs text-gray-400 flex items-center gap-2">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-[#22C55E]"></i>
+              <span>High-leverage knowledge sharing</span>
+            </div>
+          </div>
+
+          <!-- Fit 2 -->
+          <div class="bg-[#151C29] border border-[#1E293B] p-7 rounded-2xl flex flex-col justify-between hover:border-slate-700 transition-all">
+            <div>
+              <div class="w-10 h-10 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center text-emerald-400 mb-5">
+                <i data-lucide="code" class="w-5 h-5"></i>
+              </div>
+              <h3 class="text-lg font-bold text-white tracking-tight mb-3">CEOS AND TECHNICAL EXPERTS</h3>
+              <p class="text-sm text-[#9CA3AF] leading-relaxed">
+                Communicate complex ideas clearly and make your professional perspective easier for your audience to understand.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-[#1E293B]/70 text-xs text-gray-400 flex items-center gap-2">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-[#22C55E]"></i>
+              <span>Technical depth made accessible</span>
+            </div>
+          </div>
+
+          <!-- Fit 3 -->
+          <div class="bg-[#151C29] border border-[#1E293B] p-7 rounded-2xl flex flex-col justify-between hover:border-slate-700 transition-all">
+            <div>
+              <div class="w-10 h-10 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center text-emerald-400 mb-5">
+                <i data-lucide="briefcase" class="w-5 h-5"></i>
+              </div>
+              <h3 class="text-lg font-bold text-white tracking-tight mb-3">BUSY EXECUTIVES</h3>
+              <p class="text-sm text-[#9CA3AF] leading-relaxed">
+                Build a more consistent LinkedIn presence through a practical content process that respects your schedule.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-[#1E293B]/70 text-xs text-gray-400 flex items-center gap-2">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-[#22C55E]"></i>
+              <span>Zero calendar friction</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CLIENT FEEDBACK SECTION (ASSETS 6, 7, 8, 9, 1: Authentic Uploaded Reviews) -->
+    <section id="feedback" class="py-20 md:py-28 border-b border-[#1E293B]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+          <div>
+            <span class="text-xs font-semibold uppercase tracking-wider text-[#22C55E] block mb-2">Testimonials</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Client Feedback</h2>
+            <p class="text-[#9CA3AF] mt-2 text-base max-w-xl">
+              Feedback from people I've helped with LinkedIn writing.
+            </p>
+          </div>
+          <div class="text-xs text-gray-400 bg-[#151C29] px-3.5 py-1.5 rounded-lg border border-[#1E293B] self-start md:self-auto">
+            Authentic message screenshots
+          </div>
+        </div>
+
+        <!-- Responsive Testimonials Gallery -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+          <!-- Review 1: Daniel Abate Tsegaye -> https://lh3.googleusercontent.com/aida-public/AB6AXuA5EdOFiBkxUs2lImH63G-2J4miw1psjixv09RFdRjhJtVotOzMp0FChjUxE8LRmpfZuU0lsagVSThNuSiXvHVifwX6JsD15Z8dv5iQcNn09kZ5KxTfn9d4ds4BVrPgZKBuUXTWH4g7PbIpG2R09cjTWKtF8fY4LPW5B9X88H4l_0zJlcYUeWebKN7cTv1oG4JZtavKnJcd7-5-XcMEgstAOcaEDDummjgBzbK1h6v1pqeVpaoHYEG1 / https://lh3.googleusercontent.com/aida-public/AB6AXuD3jnkIwm8xBBfHzivloT91W_60_Dq9rusbWPCWBXJ4IqnodoCA37uABEGX6wllebaE2Fd0fr7_UX0Q0coRDBEQQSikqq3wWjoCPMyqeiy_RnQZkpbZbrB9B3Enf5wvDqXk5QrCqJK8hlGp6fBAVdQjjeQGPdKS9G6wXDgGB2HtjYA2iWlm5w3Htl_uKXhukc0oih7CNIGYaL1bBlaMSkdGWTbVOBYNoDVYtYsVmdbMvMdmIBc5F3VQ -->
+          <div class="bg-[#151C29] border border-[#1E293B] rounded-2xl p-6 flex flex-col justify-between hover:border-slate-700 transition-all shadow-md group">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-400 bg-[#22C55E]/10 px-2.5 py-1 rounded border border-[#22C55E]/20">
+                  <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
+                  LinkedIn Message Review
+                </span>
+                <span class="text-xs text-gray-400">Sep 30</span>
+              </div>
+              <div class="bg-white rounded-xl p-3 border border-[#1E293B] overflow-hidden mb-4 cursor-pointer" 
+                   onclick="openModal('https://lh3.googleusercontent.com/aida-public/AB6AXuA5EdOFiBkxUs2lImH63G-2J4miw1psjixv09RFdRjhJtVotOzMp0FChjUxE8LRmpfZuU0lsagVSThNuSiXvHVifwX6JsD15Z8dv5iQcNn09kZ5KxTfn9d4ds4BVrPgZKBuUXTWH4g7PbIpG2R09cjTWKtF8fY4LPW5B9X88H4l_0zJlcYUeWebKN7cTv1oG4JZtavKnJcd7-5-XcMEgstAOcaEDDummjgBzbK1h6v1pqeVpaoHYEG1', 'Client Feedback: Daniel Abate Tsegaye')">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5EdOFiBkxUs2lImH63G-2J4miw1psjixv09RFdRjhJtVotOzMp0FChjUxE8LRmpfZuU0lsagVSThNuSiXvHVifwX6JsD15Z8dv5iQcNn09kZ5KxTfn9d4ds4BVrPgZKBuUXTWH4g7PbIpG2R09cjTWKtF8fY4LPW5B9X88H4l_0zJlcYUeWebKN7cTv1oG4JZtavKnJcd7-5-XcMEgstAOcaEDDummjgBzbK1h6v1pqeVpaoHYEG1" 
+                     alt="Client feedback from Daniel Abate Tsegaye praising frameworks and fit for niche" 
+                     class="w-full h-auto object-contain block max-h-32 transition-transform duration-200 group-hover:scale-[1.01]">
+              </div>
+            </div>
+            <div class="flex items-center justify-between pt-3 border-t border-[#1E293B] text-xs text-gray-400">
+              <span class="italic">&ldquo;these frameworks look really solid and fits my niche well.&rdquo;</span>
+              <button type="button" 
+                      onclick="openModal('https://lh3.googleusercontent.com/aida-public/AB6AXuA5EdOFiBkxUs2lImH63G-2J4miw1psjixv09RFdRjhJtVotOzMp0FChjUxE8LRmpfZuU0lsagVSThNuSiXvHVifwX6JsD15Z8dv5iQcNn09kZ5KxTfn9d4ds4BVrPgZKBuUXTWH4g7PbIpG2R09cjTWKtF8fY4LPW5B9X88H4l_0zJlcYUeWebKN7cTv1oG4JZtavKnJcd7-5-XcMEgstAOcaEDDummjgBzbK1h6v1pqeVpaoHYEG1', 'Client Feedback: Daniel Abate Tsegaye')" 
+                      class="text-[#22C55E] hover:underline flex items-center gap-1 flex-shrink-0 ml-2">
+                <span>View Full</span>
+                <i data-lucide="zoom-in" class="w-3 h-3"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Review 2: Evan Massé -> https://lh3.googleusercontent.com/aida-public/AB6AXuBTxf33Vp2Zb3ECkPGMtHyCJ2gJ_4FCE-sEK6yupXtQePWo_iyQNecUrCxCPG01W7lZyvzCHcwd3-FQYg9K8Q0Cb8pNvWrTpLd6F-UOuQXcqfrRK3I4fBIoU0DRMWLbuLxYi4MP_MWaybFSV8OPtJqmsGuK7LoPrAQLiQuSSr-44-yI5WAuOMULPExKqONjvJT9ojSgL29B6R7NNyeb4T3HDQ8vbBh7ij8G9_FsOVawQ2kMBRTG6f6e -->
+          <div class="bg-[#151C29] border border-[#1E293B] rounded-2xl p-6 flex flex-col justify-between hover:border-slate-700 transition-all shadow-md group">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-400 bg-[#22C55E]/10 px-2.5 py-1 rounded border border-[#22C55E]/20">
+                  <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
+                  Client Review
+                </span>
+                <span class="text-xs text-gray-400">12:40 PM</span>
+              </div>
+              <div class="bg-white rounded-xl p-3 border border-[#1E293B] overflow-hidden mb-4 cursor-pointer"
+                   onclick="openModal('https://lh3.googleusercontent.com/aida-public/AB6AXuBTxf33Vp2Zb3ECkPGMtHyCJ2gJ_4FCE-sEK6yupXtQePWo_iyQNecUrCxCPG01W7lZyvzCHcwd3-FQYg9K8Q0Cb8pNvWrTpLd6F-UOuQXcqfrRK3I4fBIoU0DRMWLbuLxYi4MP_MWaybFSV8OPtJqmsGuK7LoPrAQLiQuSSr-44-yI5WAuOMULPExKqONjvJT9ojSgL29B6R7NNyeb4T3HDQ8vbBh7ij8G9_FsOVawQ2kMBRTG6f6e', 'Client Feedback: Evan Massé')">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTxf33Vp2Zb3ECkPGMtHyCJ2gJ_4FCE-sEK6yupXtQePWo_iyQNecUrCxCPG01W7lZyvzCHcwd3-FQYg9K8Q0Cb8pNvWrTpLd6F-UOuQXcqfrRK3I4fBIoU0DRMWLbuLxYi4MP_MWaybFSV8OPtJqmsGuK7LoPrAQLiQuSSr-44-yI5WAuOMULPExKqONjvJT9ojSgL29B6R7NNyeb4T3HDQ8vbBh7ij8G9_FsOVawQ2kMBRTG6f6e" 
+                     alt="Client review from Evan Massé praising overall structure, clarity, and engaging messaging" 
+                     class="w-full h-auto object-contain block max-h-32 transition-transform duration-200 group-hover:scale-[1.01]">
+              </div>
+            </div>
+            <div class="flex items-center justify-between pt-3 border-t border-[#1E293B] text-xs text-gray-400">
+              <span class="italic">&ldquo;I liked the overall structure and the way the message came across.&rdquo;</span>
+              <button type="button" 
+                      onclick="openModal('https://lh3.googleusercontent.com/aida-public/AB6AXuBTxf33Vp2Zb3ECkPGMtHyCJ2gJ_4FCE-sEK6yupXtQePWo_iyQNecUrCxCPG01W7lZyvzCHcwd3-FQYg9K8Q0Cb8pNvWrTpLd6F-UOuQXcqfrRK3I4fBIoU0DRMWLbuLxYi4MP_MWaybFSV8OPtJqmsGuK7LoPrAQLiQuSSr-44-yI5WAuOMULPExKqONjvJT9ojSgL29B6R7NNyeb4T3HDQ8vbBh7ij8G9_FsOVawQ2kMBRTG6f6e', 'Client Feedback: Evan Massé')" 
+                      class="text-[#22C55E] hover:underline flex items-center gap-1 flex-shrink-0 ml-2">
+                <span>View Full</span>
+                <i data-lucide="zoom-in" class="w-3 h-3"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Review 3: Prof. (h.c.) Zoltán Richtárik, PhD., DBA -> https://lh3.googleusercontent.com/aida-public/AB6AXuBWYU2-YfJAIP7T7nYN7Ne9LIPRsmP5uFdaSbnyxLJ6HJmvUPepcIRjjLs7z1VRAdg8ZOznac3K-r5VIwNx11Lecrrztt_mU4mVJ4M4tdNk6lvivRM9C3OemhIQKFBsOk97laWYND1OfNTLh4mms49or1kj485QtrNQh1ksMatdWuz4vzRwz9ul7_XGS1Wn71E6hW3U4jUKQgSzJl2lLQC3cJ0iUJdoja6x049wWdG1XdQog0L7B8zz -->
+          <div class="bg-[#151C29] border border-[#1E293B] rounded-2xl p-6 flex flex-col justify-between hover:border-slate-700 transition-all shadow-md group">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-400 bg-[#22C55E]/10 px-2.5 py-1 rounded border border-[#22C55E]/20">
+                  <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+                  Executive Client Feedback
+                </span>
+                <span class="text-xs text-gray-400">10:09 PM</span>
+              </div>
+              <div class="bg-white rounded-xl p-3 border border-[#1E293B] overflow-hidden mb-4 cursor-pointer"
+                   onclick="openModal('https://lh3.googleusercontent.com/aida-public/AB6AXuBWYU2-YfJAIP7T7nYN7Ne9LIPRsmP5uFdaSbnyxLJ6HJmvUPepcIRjjLs7z1VRAdg8ZOznac3K-r5VIwNx11Lecrrztt_mU4mVJ4M4tdNk6lvivRM9C3OemhIQKFBsOk97laWYND1OfNTLh4mms49or1kj485QtrNQh1ksMatdWuz4vzRwz9ul7_XGS1Wn71E6hW3U4jUKQgSzJl2lLQC3cJ0iUJdoja6x049wWdG1XdQog0L7B8zz', 'Client Feedback: Prof. Zoltán Richtárik')">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWYU2-YfJAIP7T7nYN7Ne9LIPRsmP5uFdaSbnyxLJ6HJmvUPepcIRjjLs7z1VRAdg8ZOznac3K-r5VIwNx11Lecrrztt_mU4mVJ4M4tdNk6lvivRM9C3OemhIQKFBsOk97laWYND1OfNTLh4mms49or1kj485QtrNQh1ksMatdWuz4vzRwz9ul7_XGS1Wn71E6hW3U4jUKQgSzJl2lLQC3cJ0iUJdoja6x049wWdG1XdQog0L7B8zz" 
+                     alt="Client feedback from Prof. Zoltán Richtárik stating he likes the overall direction" 
+                     class="w-full h-auto object-contain block max-h-32 transition-transform duration-200 group-hover:scale-[1.01]">
+              </div>
+            </div>
+            <div class="flex items-center justify-between pt-3 border-t border-[#1E293B] text-xs text-gray-400">
+              <span class="italic">&ldquo;I like the overall direction, and I think this could work well.&rdquo;</span>
+              <button type="button" 
+                      onclick="openModal('https://lh3.googleusercontent.com/aida-public/AB6AXuBWYU2-YfJAIP7T7nYN7Ne9LIPRsmP5uFdaSbnyxLJ6HJmvUPepcIRjjLs7z1VRAdg8ZOznac3K-r5VIwNx11Lecrrztt_mU4mVJ4M4tdNk6lvivRM9C3OemhIQKFBsOk97laWYND1OfNTLh4mms49or1kj485QtrNQh1ksMatdWuz4vzRwz9ul7_XGS1Wn71E6hW3U4jUKQgSzJl2lLQC3cJ0iUJdoja6x049wWdG1XdQog0L7B8zz', 'Client Feedback: Prof. Zoltán Richtárik')" 
+                      class="text-[#22C55E] hover:underline flex items-center gap-1 flex-shrink-0 ml-2">
+                <span>View Full</span>
+                <i data-lucide="zoom-in" class="w-3 h-3"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Review 4: Dylan Balzer -> https://lh3.googleusercontent.com/aida-public/AB6AXuDrzOiqnlghsvEXCgGaFPMs2_vNGUF_Q_vZhVFL1FT5yMnTF48t2qVAS-WHtDKUxdyEEtQHgn6C-0wTuKhOHNoyyQpOygxuPw-jRXY3ODebYEMWB97LYqInW2P7s84zecRiFcd2y3JRuL_5gbAwE8Ko4qxFgyg4DUx4ILDLXQv2RwVjbAswIICVebAMHIdk6Tv7W-EpYOWpzeDQyTBlzi2aCTXXHNfoHmX6MZ_RCbDZmR6sliDGkva7 -->
+          <div class="bg-[#151C29] border border-[#1E293B] rounded-2xl p-6 flex flex-col justify-between hover:border-slate-700 transition-all shadow-md group">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-400 bg-[#22C55E]/10 px-2.5 py-1 rounded border border-[#22C55E]/20">
+                  <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
+                  LinkedIn Message Review
+                </span>
+                <span class="text-xs text-gray-400">Oct 14</span>
+              </div>
+              <div class="bg-white rounded-xl p-3 border border-[#1E293B] overflow-hidden mb-4 cursor-pointer"
+                   onclick="openModal('https://lh3.googleusercontent.com/aida-public/AB6AXuDrzOiqnlghsvEXCgGaFPMs2_vNGUF_Q_vZhVFL1FT5yMnTF48t2qVAS-WHtDKUxdyEEtQHgn6C-0wTuKhOHNoyyQpOygxuPw-jRXY3ODebYEMWB97LYqInW2P7s84zecRiFcd2y3JRuL_5gbAwE8Ko4qxFgyg4DUx4ILDLXQv2RwVjbAswIICVebAMHIdk6Tv7W-EpYOWpzeDQyTBlzi2aCTXXHNfoHmX6MZ_RCbDZmR6sliDGkva7', 'Client Feedback: Dylan Balzer')">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrzOiqnlghsvEXCgGaFPMs2_vNGUF_Q_vZhVFL1FT5yMnTF48t2qVAS-WHtDKUxdyEEtQHgn6C-0wTuKhOHNoyyQpOygxuPw-jRXY3ODebYEMWB97LYqInW2P7s84zecRiFcd2y3JRuL_5gbAwE8Ko4qxFgyg4DUx4ILDLXQv2RwVjbAswIICVebAMHIdk6Tv7W-EpYOWpzeDQyTBlzi2aCTXXHNfoHmX6MZ_RCbDZmR6sliDGkva7" 
+                     alt="Client review from Dylan Balzer sharing positive feedback on post drafts" 
+                     class="w-full h-auto object-contain block max-h-32 transition-transform duration-200 group-hover:scale-[1.01]">
+              </div>
+            </div>
+            <div class="flex items-center justify-between pt-3 border-t border-[#1E293B] text-xs text-gray-400">
+              <span class="italic">&ldquo;They're really nice honestly and I like them a lot&rdquo;</span>
+              <button type="button" 
+                      onclick="openModal('https://lh3.googleusercontent.com/aida-public/AB6AXuDrzOiqnlghsvEXCgGaFPMs2_vNGUF_Q_vZhVFL1FT5yMnTF48t2qVAS-WHtDKUxdyEEtQHgn6C-0wTuKhOHNoyyQpOygxuPw-jRXY3ODebYEMWB97LYqInW2P7s84zecRiFcd2y3JRuL_5gbAwE8Ko4qxFgyg4DUx4ILDLXQv2RwVjbAswIICVebAMHIdk6Tv7W-EpYOWpzeDQyTBlzi2aCTXXHNfoHmX6MZ_RCbDZmR6sliDGkva7', 'Client Feedback: Dylan Balzer')" 
+                      class="text-[#22C55E] hover:underline flex items-center gap-1 flex-shrink-0 ml-2">
+                <span>View Full</span>
+                <i data-lucide="zoom-in" class="w-3 h-3"></i>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- HOW THE PROCESS WORKS SECTION -->
+    <section id="process" class="py-20 md:py-28 bg-[#111827] border-b border-[#1E293B]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="max-w-3xl mb-16">
+          <span class="text-xs font-semibold uppercase tracking-wider text-[#22C55E] block mb-2">Workflow</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">A Simple, Async-First Process</h2>
+          <p class="text-[#9CA3AF] mt-2 text-base">
+            No endless discovery calls or calendar Tetris. We get started immediately using text and async notes.
+          </p>
+        </div>
+
+        <!-- 3-Step Process (Horizontal on Desktop, Vertical on Mobile) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+          
+          <!-- Step 1 -->
+          <div class="bg-[#151C29] border border-[#1E293B] p-8 rounded-2xl relative">
+            <div class="text-4xl font-black text-slate-800 mb-4 tracking-tighter">01</div>
+            <div class="inline-block text-xs font-bold text-[#22C55E] tracking-wider uppercase mb-2">STEP 1</div>
+            <h3 class="text-xl font-bold text-white tracking-tight mb-3">SHARE YOUR IDEAS</h3>
+            <p class="text-sm text-[#9CA3AF] leading-relaxed">
+              Send your LinkedIn profile, a few bullet points, an existing draft, or a short voice note. We can begin without scheduling a discovery call.
+            </p>
+            <div class="mt-6 flex items-center gap-2 text-xs text-gray-400">
+              <i data-lucide="mic" class="w-3.5 h-3.5 text-[#22C55E]"></i>
+              <span>Voice notes, bullets, or notes</span>
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="bg-[#151C29] border border-[#1E293B] p-8 rounded-2xl relative">
+            <div class="text-4xl font-black text-slate-800 mb-4 tracking-tighter">02</div>
+            <div class="inline-block text-xs font-bold text-[#22C55E] tracking-wider uppercase mb-2">STEP 2</div>
+            <h3 class="text-xl font-bold text-white tracking-tight mb-3">I DEVELOP THE CONTENT</h3>
+            <p class="text-sm text-[#9CA3AF] leading-relaxed">
+              I shape your input into a clear draft that reflects your expertise, perspective, and preferred tone.
+            </p>
+            <div class="mt-6 flex items-center gap-2 text-xs text-gray-400">
+              <i data-lucide="sliders" class="w-3.5 h-3.5 text-[#22C55E]"></i>
+              <span>Tone matching &amp; structural polish</span>
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="bg-[#151C29] border border-[#1E293B] p-8 rounded-2xl relative">
+            <div class="text-4xl font-black text-slate-800 mb-4 tracking-tighter">03</div>
+            <div class="inline-block text-xs font-bold text-[#22C55E] tracking-wider uppercase mb-2">STEP 3</div>
+            <h3 class="text-xl font-bold text-white tracking-tight mb-3">REVIEW AND REFINE</h3>
+            <p class="text-sm text-[#9CA3AF] leading-relaxed">
+              Receive your draft in Google Docs, review it at your convenience, and share any edits before publication.
+            </p>
+            <div class="mt-6 flex items-center gap-2 text-xs text-gray-400">
+              <i data-lucide="file-check" class="w-3.5 h-3.5 text-[#22C55E]"></i>
+              <span>Google Docs &middot; One-click review</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ASYNC COMMUNICATION (Distinctive Section with Subtle Emerald Border) -->
+    <section class="py-20 md:py-28 border-b border-[#1E293B] bg-[#0B0F17]">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="bg-[#151C29] border-2 border-[#22C55E]/40 rounded-3xl p-8 sm:p-12 lg:p-14 shadow-2xl relative overflow-hidden">
+          <div class="absolute -right-20 -top-20 w-80 h-80 bg-[#22C55E]/5 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+
+          <div class="max-w-3xl">
+            <span class="inline-block text-xs font-bold uppercase tracking-wider text-[#22C55E] mb-3">Communication Style</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-6">
+              Prefer Texting Over Calls? So Do I.
+            </h2>
+            <p class="text-base sm:text-lg text-[#9CA3AF] leading-relaxed mb-8 font-normal">
+              Your schedule is busy enough. We can discuss your goals, share ideas, and review content through text, email, or voice notes—without making long video calls the default.
+            </p>
+
+            <!-- Supporting Points -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+              <div class="flex items-center gap-3 text-sm text-gray-200">
+                <div class="w-6 h-6 rounded-full bg-[#22C55E]/10 border border-[#22C55E]/30 flex items-center justify-center flex-shrink-0 text-[#22C55E]">
+                  <i data-lucide="check" class="w-4 h-4 stroke-[3]"></i>
+                </div>
+                <span>Text-first communication</span>
+              </div>
+              <div class="flex items-center gap-3 text-sm text-gray-200">
+                <div class="w-6 h-6 rounded-full bg-[#22C55E]/10 border border-[#22C55E]/30 flex items-center justify-center flex-shrink-0 text-[#22C55E]">
+                  <i data-lucide="check" class="w-4 h-4 stroke-[3]"></i>
+                </div>
+                <span>Clear written feedback</span>
+              </div>
+              <div class="flex items-center gap-3 text-sm text-gray-200">
+                <div class="w-6 h-6 rounded-full bg-[#22C55E]/10 border border-[#22C55E]/30 flex items-center justify-center flex-shrink-0 text-[#22C55E]">
+                  <i data-lucide="check" class="w-4 h-4 stroke-[3]"></i>
+                </div>
+                <span>Flexible draft reviews</span>
+              </div>
+              <div class="flex items-center gap-3 text-sm text-gray-200">
+                <div class="w-6 h-6 rounded-full bg-[#22C55E]/10 border border-[#22C55E]/30 flex items-center justify-center flex-shrink-0 text-[#22C55E]">
+                  <i data-lucide="check" class="w-4 h-4 stroke-[3]"></i>
+                </div>
+                <span>Straightforward collaboration</span>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-wrap items-center gap-4">
+              <a href="https://www.linkedin.com/in/aleeza-shaheen-98b3b53a5" target="_blank" rel="noopener noreferrer"
+                 class="inline-flex items-center gap-2 px-6 py-3.5 rounded-lg bg-[#22C55E] hover:bg-[#1ea34d] text-slate-950 font-bold text-base transition-colors shadow-lg shadow-[#22C55E]/10 focus:outline-none focus:ring-2 focus:ring-[#22C55E] focus:ring-offset-2 focus:ring-offset-[#151C29]">
+                <span>Message Me on LinkedIn</span>
+                <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+              </a>
+              <!-- Secondary action: linking directly to LinkedIn profile as contact destination -->
+              <a href="https://www.linkedin.com/in/aleeza-shaheen-98b3b53a5" target="_blank" rel="noopener noreferrer"
+                 class="inline-flex items-center gap-2 px-6 py-3.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-medium text-base border border-slate-700 transition-colors">
+                <i data-lucide="message-square" class="w-4 h-4 text-emerald-400"></i>
+                <span>Direct Message</span>
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FAQ SECTION (Accessible Accordion) -->
+    <section id="faq" class="py-20 md:py-28 bg-[#111827] border-b border-[#1E293B]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center mb-14">
+          <span class="text-xs font-semibold uppercase tracking-wider text-[#22C55E] block mb-2">Frequently Asked Questions</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Got Questions? Here Are Answers.</h2>
+        </div>
+
+        <!-- Accordion Container -->
+        <div class="space-y-4" id="faqAccordion">
+          
+          <!-- Q1 -->
+          <div class="bg-[#151C29] border border-[#1E293B] rounded-xl overflow-hidden transition-colors">
+            <button type="button" 
+                    class="faq-trigger w-full px-6 py-5 text-left flex items-center justify-between font-semibold text-white hover:text-emerald-400 focus:outline-none focus:ring-2 focus:ring-[#22C55E] focus:ring-inset" 
+                    aria-expanded="false" 
+                    aria-controls="faq-a1" 
+                    id="faq-q1">
+              <span class="text-base sm:text-lg">Do we need to schedule calls?</span>
+              <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-[#22C55E] transition-transform duration-200"></i>
+            </button>
+            <div id="faq-a1" class="faq-panel hidden px-6 pb-5 pt-1 text-sm sm:text-base text-[#9CA3AF] leading-relaxed border-t border-[#1E293B]/40" role="region" aria-labelledby="faq-q1">
+              No. My process is designed around text, email, and voice notes. We can collaborate asynchronously without routine discovery calls.
+            </div>
+          </div>
+
+          <!-- Q2 -->
+          <div class="bg-[#151C29] border border-[#1E293B] rounded-xl overflow-hidden transition-colors">
+            <button type="button" 
+                    class="faq-trigger w-full px-6 py-5 text-left flex items-center justify-between font-semibold text-white hover:text-emerald-400 focus:outline-none focus:ring-2 focus:ring-[#22C55E] focus:ring-inset" 
+                    aria-expanded="false" 
+                    aria-controls="faq-a2" 
+                    id="faq-q2">
+              <span class="text-base sm:text-lg">How do you capture my voice?</span>
+              <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-[#22C55E] transition-transform duration-200"></i>
+            </button>
+            <div id="faq-a2" class="faq-panel hidden px-6 pb-5 pt-1 text-sm sm:text-base text-[#9CA3AF] leading-relaxed border-t border-[#1E293B]/40" role="region" aria-labelledby="faq-q2">
+              I learn from your existing content, professional background, examples you share, and feedback on early drafts. The goal is to reflect your perspective rather than produce generic content.
+            </div>
+          </div>
+
+          <!-- Q3 -->
+          <div class="bg-[#151C29] border border-[#1E293B] rounded-xl overflow-hidden transition-colors">
+            <button type="button" 
+                    class="faq-trigger w-full px-6 py-5 text-left flex items-center justify-between font-semibold text-white hover:text-emerald-400 focus:outline-none focus:ring-2 focus:ring-[#22C55E] focus:ring-inset" 
+                    aria-expanded="false" 
+                    aria-controls="faq-a3" 
+                    id="faq-q3">
+              <span class="text-base sm:text-lg">How is content delivered?</span>
+              <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-[#22C55E] transition-transform duration-200"></i>
+            </button>
+            <div id="faq-a3" class="faq-panel hidden px-6 pb-5 pt-1 text-sm sm:text-base text-[#9CA3AF] leading-relaxed border-t border-[#1E293B]/40" role="region" aria-labelledby="faq-q3">
+              Drafts can be delivered through Google Docs for review and revision. Publishing or scheduling can be discussed separately depending on the tools and access available.
+            </div>
+          </div>
+
+          <!-- Q4 -->
+          <div class="bg-[#151C29] border border-[#1E293B] rounded-xl overflow-hidden transition-colors">
+            <button type="button" 
+                    class="faq-trigger w-full px-6 py-5 text-left flex items-center justify-between font-semibold text-white hover:text-emerald-400 focus:outline-none focus:ring-2 focus:ring-[#22C55E] focus:ring-inset" 
+                    aria-expanded="false" 
+                    aria-controls="faq-a4" 
+                    id="faq-q4">
+              <span class="text-base sm:text-lg">How does pricing work?</span>
+              <i data-lucide="chevron-down" class="faq-icon w-5 h-5 text-[#22C55E] transition-transform duration-200"></i>
+            </button>
+            <div id="faq-a4" class="faq-panel hidden px-6 pb-5 pt-1 text-sm sm:text-base text-[#9CA3AF] leading-relaxed border-t border-[#1E293B]/40" role="region" aria-labelledby="faq-q4">
+              Pricing depends on the scope, posting frequency, and services required. Message me with your goals to discuss a suitable package.
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FINAL CALL TO ACTION SECTION -->
+    <section class="py-20 md:py-28 relative overflow-hidden bg-[#0B0F17]">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+        
+        <span class="inline-block text-xs font-semibold uppercase tracking-wider text-[#22C55E] mb-3">Get Started</span>
+        <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-6 leading-tight">
+          Your Experience Deserves Better Than Staying in Drafts.
+        </h2>
+        <p class="text-base sm:text-lg text-[#9CA3AF] leading-relaxed mb-10 max-w-2xl mx-auto">
+          Let's turn your ideas into clear, thoughtful LinkedIn content that sounds like you.
+        </p>
+
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="https://www.linkedin.com/in/aleeza-shaheen-98b3b53a5" target="_blank" rel="noopener noreferrer"
+             class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg bg-[#22C55E] hover:bg-[#1ea34d] text-slate-950 font-bold text-base transition-colors shadow-xl shadow-[#22C55E]/15 focus:outline-none focus:ring-2 focus:ring-[#22C55E] focus:ring-offset-2 focus:ring-offset-[#0B0F17]">
+            <span>Request a Free Custom Sample</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/aleeza-shaheen-98b3b53a5" target="_blank" rel="noopener noreferrer"
+             class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg bg-[#151C29] hover:bg-[#1E293B] text-white font-medium text-base border border-[#1E293B] hover:border-slate-600 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-500">
+            <i data-lucide="linkedin" class="w-4 h-4 text-emerald-400"></i>
+            <span>Connect on LinkedIn</span>
+          </a>
+        </div>
+
+        <p class="text-xs text-gray-500 mt-6">
+          Response within 24 hours &middot; No scheduled calls required
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#111827] border-t border-[#1E293B] py-12 md:py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start pb-12 border-b border-[#1E293B]">
+        <!-- Brand Info -->
+        <div class="md:col-span-6 space-y-3">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full overflow-hidden border border-[#22C55E]/50">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnjkuJbbcG0k5pimciKuqvmdqz3f8KVY8zx1FrhrX0kt599cjbx9jXJsMME8qyvzbVeQkfluchsKyFduTnAHVxG4CTVWQTtcR3z80tnn9tcUiBGYb6tu9R6XCCJbgl3k2uGfIS874vzs-75Z2gVSLy7sp-C2ZUXRV9A5GDoYTjo-LuDs-axz-KvpyoyFUD7Ka8-ECAwxk04fZla1haJdWZ3mCeED1vYvPZ2vHqJ6P8hMFQw-a2MFwF" alt="Aleeza Shaheen" class="w-full h-full object-cover">
+            </div>
+            <span class="text-lg font-bold text-white tracking-tight">Aleeza Shaheen</span>
+          </div>
+          <p class="text-sm text-[#22C55E] font-medium">B2B LinkedIn Ghostwriter &amp; Personal Brand Strategist</p>
+          <p class="text-xs text-[#9CA3AF] max-w-sm">
+            Thoughtful content. Clear communication. No unnecessary meetings.
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="md:col-span-3 space-y-2">
+          <h4 class="text-xs font-semibold text-white uppercase tracking-wider">Navigation</h4>
+          <ul class="space-y-1.5 text-xs text-[#9CA3AF]">
+            <li><a href="#work" class="hover:text-white transition-colors">Work</a></li>
+            <li><a href="#samples" class="hover:text-white transition-colors">Samples</a></li>
+            <li><a href="#services" class="hover:text-white transition-colors">Services</a></li>
+            <li><a href="#feedback" class="hover:text-white transition-colors">Client Feedback</a></li>
+            <li><a href="#process" class="hover:text-white transition-colors">Process</a></li>
+            <li><a href="#faq" class="hover:text-white transition-colors">FAQ</a></li>
+          </ul>
+        </div>
+
+        <!-- Connect Links -->
+        <div class="md:col-span-3 space-y-2">
+          <h4 class="text-xs font-semibold text-white uppercase tracking-wider">Connect</h4>
+          <ul class="space-y-2 text-xs text-[#9CA3AF]">
+            <li>
+              <a href="https://www.linkedin.com/in/aleeza-shaheen-98b3b53a5" target="_blank" rel="noopener noreferrer" 
+                 class="inline-flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300 transition-colors font-medium">
+                <i data-lucide="linkedin" class="w-4 h-4"></i>
+                <span>linkedin.com/in/aleeza-shaheen-98b3b53a5</span>
+              </a>
+            </li>
+            <li class="text-gray-400 text-[11px]">
+              Direct inquiries via LinkedIn messaging
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Copyright & Bottom Tagline -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-400">
+        <div>
+          Copyright &copy; 2026 Aleeza Shaheen. All rights reserved.
+        </div>
+        <div class="text-gray-400">
+          Thoughtful content. Clear communication. No unnecessary meetings.
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- LIGHTBOX / HIGH-RES INSPECT MODAL -->
+  <div id="imageModal" 
+       class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-4 sm:p-6" 
+       role="dialog" 
+       aria-modal="true" 
+       aria-labelledby="modalTitle">
+    
+    <div class="relative max-w-4xl w-full max-h-[92vh] flex flex-col bg-[#151C29] border border-[#1E293B] rounded-2xl overflow-hidden shadow-2xl">
+      <!-- Modal Header -->
+      <div class="px-6 py-4 bg-[#111827] border-b border-[#1E293B] flex items-center justify-between">
+        <h3 id="modalTitle" class="text-sm font-semibold text-white truncate pr-4">Image Preview</h3>
+        <button type="button" 
+                onclick="closeModal()" 
+                class="p-1.5 rounded-lg text-gray-400 hover:text-white hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-[#22C55E]"
+                aria-label="Close modal">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Modal Body / High-Res Image View -->
+      <div class="p-4 sm:p-6 overflow-auto flex-1 flex items-center justify-center bg-[#0B0F17] custom-scrollbar">
+        <img id="modalImage" src="" alt="Enlarged preview" class="max-w-full max-h-[75vh] object-contain rounded-lg shadow-lg">
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="px-6 py-3 bg-[#111827] border-t border-[#1E293B] flex items-center justify-between text-xs text-gray-400">
+        <span>Use ESC key or close button to dismiss</span>
+        <button type="button" onclick="closeModal()" class="px-3 py-1.5 rounded-md bg-slate-800 hover:bg-slate-700 text-white font-medium transition-colors">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- INTERACTIVITY JAVASCRIPT -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuIcon = document.getElementById('menuIcon');
+
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => {
+        const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+        mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
+        mobileMenu.classList.toggle('hidden');
+      });
+
+      // Close mobile menu on link click
+      document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
+    // Accessible Accordion (Part 13: FAQ)
+    document.querySelectorAll('.faq-trigger').forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+        const panel = trigger.nextElementSibling;
+        const icon = trigger.querySelector('.faq-icon');
+
+        // Toggle state
+        trigger.setAttribute('aria-expanded', !isExpanded);
+        panel.classList.toggle('hidden');
+        if (icon) {
+          icon.style.transform = isExpanded ? 'rotate(0deg)' : 'rotate(180deg)';
+        }
+      });
+    });
+
+    // Lightbox Modal for Screenshots (Work Samples & Feedback)
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalTitle = document.getElementById('modalTitle');
+
+    function openModal(imgSrc, title) {
+      if (!modal || !modalImage) return;
+      modalImage.src = imgSrc;
+      modalTitle.textContent = title || 'High-Resolution Preview';
+      modal.classList.remove('hidden');
+      document.body.classList.add('overflow-hidden');
+    }
+
+    function closeModal() {
+      if (!modal) return;
+      modal.classList.add('hidden');
+      document.body.classList.remove('overflow-hidden');
+      if (modalImage) modalImage.src = '';
+    }
+
+    // Close modal on click outside content
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+    }
+
+    // Keyboard support: Escape closes modal
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+        closeModal();
+      }
+    });
+  </script>
 </body>
 </html>
